@@ -1,5 +1,6 @@
 import Head from "next/head";
-import React, { ReactNode } from "react";
+import React from "react";
+import Navbar from "../Navbar/Navbar";
 
 interface AppLayout {
   children: JSX.Element[] | JSX.Element;
@@ -16,6 +17,7 @@ export default function AppLayout({
         <title>{titleHead}</title>
       </Head>
       <main className="flex justify-center content-center pt-4 flex-col">
+        {/* <Navbar /> */}
         {children}
       </main>
     </>
