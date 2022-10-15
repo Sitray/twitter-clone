@@ -1,5 +1,6 @@
 import { InferGetStaticPropsType } from "next";
 import AppLayout from "../../components/AppLayout/AppLayout";
+import IData from "../../interfaces/IData";
 
 export default function TimeLine({
   userName,
@@ -12,8 +13,8 @@ export default function TimeLine({
 }
 
 export async function getStaticProps() {
-  const data = await fetch("http://localhost:3000/api/hello").then((res) =>
-    res.json()
+  const data: IData = await fetch("http://localhost:3000/api/hello").then(
+    (res) => res.json()
   );
   const { userName } = data;
 
