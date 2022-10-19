@@ -12,7 +12,7 @@ export default function AppLayout({
   titleHead = "Twitter",
 }: AppLayout) {
   return (
-    <div className="grid place-items-center h-screen ">
+    <div className="grid place-items-center h-screen font-sans">
       <Head>
         <title>{titleHead}</title>
       </Head>
