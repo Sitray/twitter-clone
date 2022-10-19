@@ -6,5 +6,5 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<IData>
 ) {
-  res.status(200).json({ userName: "John Doe" });
+  res.status(200).json({ userName: "Eric" });
 }
