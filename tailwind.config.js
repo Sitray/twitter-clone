@@ -10,6 +10,9 @@ module.exports = {
         primary: "#0099ff",
         secondary: "#1c5480",
       },
+      spacing: {
+        90: "90vh",
+      },
     },
   },
   plugins: [],

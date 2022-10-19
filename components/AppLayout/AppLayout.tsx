@@ -12,14 +12,14 @@ export default function AppLayout({
   titleHead = "Twitter",
 }: AppLayout) {
   return (
-    <>
+    <div className="grid place-items-center h-screen ">
       <Head>
         <title>{titleHead}</title>
       </Head>
-      <main className="flex justify-center content-center pt-4 flex-col">
+      <main className="bg-white shadow-2xl rounded-xl container md:h-90 md:mx-auto lg:w-2/3 h-screen">
         {/* <Navbar /> */}
         {children}
       </main>
-    </>
+    </div>
   );
 }

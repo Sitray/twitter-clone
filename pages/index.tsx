@@ -6,7 +6,7 @@ import styles from "../styles/Home.module.css";
 const Home: NextPage = () => {
   return (
     <>
-      <nav className="text-center pt-8">
+      <nav className="text-center pt-8 text-2xl">
         <Link href="/timeline">
           <a>Timeline</a>
         </Link>
