@@ -1,15 +1,18 @@
 import type { NextPage } from "next";
-import Link from "next/link";
-import AppLayout from "../components/AppLayout/AppLayout";
-import styles from "../styles/Home.module.css";
+import Image from "next/image";
 
 const Home: NextPage = () => {
   return (
     <>
-      <nav className="text-center pt-8 text-2xl">
-        <Link href="/timeline">
-          <a>Timeline</a>
-        </Link>
+      <nav className="text-center grid h-full place-items-center place-content-center pt-8 text-2xl">
+        <Image
+          src="/twitter-logo.svg"
+          alt="twitter logo"
+          width="120"
+          height="120"
+        />
+        <h1 className="text-primary font-extrabold mb-3 mt-3">Twitter</h1>
+        <h2 className="text-secondary text-2xl">Talk about anything</h2>
       </nav>
     </>
   );
