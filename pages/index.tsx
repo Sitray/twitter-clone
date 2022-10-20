@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
-import type { NextPage } from "next";
-import Image from "next/image";
-import Button from "../components/Button/Button";
-import GitHub from "../components/Icons/Github";
-import { loginWithGithub, onAuthState } from "../firebase/client";
-import IGithub from "../interfaces/IGithub";
+import { useEffect, useState } from 'react';
+import type { NextPage } from 'next';
+import Image from 'next/image';
+import Button from '../components/Button/Button';
+import GitHub from '../components/Icons/Github';
+import { loginWithGithub, onAuthState } from '../firebase/client';
+import IGithub from '../interfaces/IGithub';
 
 const Home: NextPage = () => {
-  const [user, setUser] = useState<IGithub | undefined>(undefined);
+  const [user, setUser] = useState<IGithub | undefined | null>(undefined);
 
   useEffect(() => {
     onAuthState(setUser);
@@ -16,11 +16,7 @@ const Home: NextPage = () => {
   const handleOnLogin = () => {
     loginWithGithub()
       .then((user) => {
-        if (user) {
-          const { avatar, displayName, email, phoneNumber } = user;
-
-          setUser(user);
-        }
+        setUser(user);
       })
       .catch((err) => {
         console.log(err);
