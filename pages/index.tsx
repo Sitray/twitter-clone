@@ -7,7 +7,7 @@ import { loginWithGithub, onAuthState } from "../firebase/client";
 import IGithub from "../interfaces/IGithub";
 
 const Home: NextPage = () => {
-  const [user, setUser] = useState<IGithub>();
+  const [user, setUser] = useState<IGithub | undefined>(undefined);
 
   useEffect(() => {
     onAuthState(setUser);
@@ -39,12 +39,13 @@ const Home: NextPage = () => {
         <h1 className="text-primary font-extrabold mb-3 mt-3">Twitter</h1>
         <h2 className="text-secondary text-2xl">Talk about anything</h2>
         <div className="mt-3">
-          {!user ? (
+          {user === null && (
             <Button onClick={handleOnLogin}>
               <GitHub fill="white" width="24" height="24" />
               <span className="ml-2">Login with Github</span>
             </Button>
-          ) : (
+          )}
+          {user && user.avatar && (
             <div>
               <Image src={user.avatar} alt="avatar" width="120" height="120" />
               <strong>{user.userName}</strong>
