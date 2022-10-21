@@ -1,6 +1,6 @@
-import Head from "next/head";
-import React from "react";
-import Navbar from "../Navbar/Navbar";
+import Head from 'next/head';
+import React from 'react';
+import Navbar from '../Navbar/Navbar';
 
 interface AppLayout {
   children: JSX.Element[] | JSX.Element;
@@ -9,7 +9,7 @@ interface AppLayout {
 
 export default function AppLayout({
   children,
-  titleHead = "Twitter",
+  titleHead = 'Twitter',
 }: AppLayout) {
   return (
     <div className="grid place-items-center h-screen font-sans">

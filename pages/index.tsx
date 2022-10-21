@@ -5,6 +5,7 @@ import Button from '../components/Button/Button';
 import GitHub from '../components/Icons/Github';
 import { loginWithGithub, onAuthState } from '../firebase/client';
 import IGithub from '../interfaces/IGithub';
+import Avatar from '../components/Avatar/Avatar';
 
 const Home: NextPage = () => {
   const [user, setUser] = useState<IGithub | undefined | null>(undefined);
@@ -41,11 +42,13 @@ const Home: NextPage = () => {
               <span className="ml-2">Login with Github</span>
             </Button>
           )}
-          {user && user.avatar && (
-            <div>
-              <Image src={user.avatar} alt="avatar" width="120" height="120" />
-              <strong>{user.userName}</strong>
-            </div>
+          {user && (
+            <Avatar
+              image={user.avatar}
+              alt="Avatar user info"
+              text={user.userName}
+              withText
+            />
           )}
         </div>
       </section>
