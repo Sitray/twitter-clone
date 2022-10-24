@@ -11,6 +11,7 @@ import Loader from '../components/Spinner/Loader';
 const Home: NextPage = () => {
   const [user, setUser] = useState<IGithub | undefined | null>(undefined);
   const router = useRouter();
+
   useEffect(() => {
     onAuthState(setUser);
   }, []);
