@@ -6,7 +6,7 @@ interface AvatarProps {
   width?: string;
   height?: string;
   withText: boolean;
-  text: string;
+  text?: string;
 }
 
 export default function Avatar({
@@ -18,13 +18,13 @@ export default function Avatar({
   text,
 }: AvatarProps) {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center w-12 h-12">
       <Image
         src={image}
         alt={alt}
         width={width}
         height={height}
-        className="rounded-full "
+        className="rounded-full object-none "
       />
       {withText && <strong className="ml-2">{text}</strong>}
     </div>
