@@ -6,13 +6,18 @@ import GitHub from '../components/Icons/Github';
 import { loginWithGithub, onAuthState } from '../firebase/client';
 import IGithub from '../interfaces/IGithub';
 import Avatar from '../components/Avatar/Avatar';
+import { Router, useRouter } from 'next/router';
 
 const Home: NextPage = () => {
   const [user, setUser] = useState<IGithub | undefined | null>(undefined);
-
+  const router = useRouter();
   useEffect(() => {
     onAuthState(setUser);
   }, []);
+
+  useEffect(() => {
+    user && router.replace('/home');
+  }, [user]);
 
   const handleOnLogin = () => {
     loginWithGithub()

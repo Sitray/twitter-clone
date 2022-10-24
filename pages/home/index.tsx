@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Navbar from '../../components/Navbar/Navbar';
 import Tuit from '../../components/Tuit/Tuit';
 import IHomeTimeline from '../../interfaces/IHomeTimeline';
 
@@ -10,14 +11,18 @@ export default function HomePage() {
       .then((res) => res.json())
       .then(setTimeline);
   }, []);
-
+  console.log(timeline[0]);
   return (
     <>
       <section>
-        <header className="h-12 sticky top-0  rounded-b-sm border-2 border-black flex items-center">
-          <h2 className="font-extrabold text-lg">Inicio</h2>
+        <header className="w-full">
+          <Navbar
+            avatar={timeline.length > 0 ? timeline[0].avatar : ''}
+            altImage={timeline.length > 0 ? timeline[0].username : ''}
+            text="Inicio"
+          />
         </header>
-        <section className="">
+        <section className="mb-1">
           {timeline.map((twit: IHomeTimeline) => {
             return (
               <Tuit
@@ -30,9 +35,7 @@ export default function HomePage() {
             );
           })}
         </section>
-        <nav className="fixed bottom-0 border-t-2 border-black h-12 lg:w-2/3 md:w-90 w-screen">
-          <h1>Bottom</h1>
-        </nav>
+        <nav className="sticky bottom-0 border-t-2 border-black h-12 lg:w-2/3 md:w-90 w-screen"></nav>
       </section>
     </>
   );

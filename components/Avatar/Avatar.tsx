@@ -5,7 +5,7 @@ interface AvatarProps {
   alt: string;
   width?: string;
   height?: string;
-  withText: boolean;
+  withText?: boolean;
   text?: string;
 }
 
@@ -14,7 +14,7 @@ export default function Avatar({
   alt,
   width = '49',
   height = '49',
-  withText,
+  withText = false,
   text,
 }: AvatarProps) {
   return (

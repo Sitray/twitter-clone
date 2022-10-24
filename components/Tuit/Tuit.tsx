@@ -14,7 +14,7 @@ export default function Tuit({
         <div className="mr-3 w-auto object-none">
           <Avatar image={avatar} alt={username} withText={false} />
         </div>
-        <section>
+        <section className="mb-2">
           <strong>{username}</strong>
           <p>{message}</p>
         </section>
