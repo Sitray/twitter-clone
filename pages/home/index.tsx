@@ -11,7 +11,7 @@ export default function HomePage() {
       .then((res) => res.json())
       .then(setTimeline);
   }, []);
-  console.log(timeline[0]);
+
   return (
     <>
       <section>
@@ -25,13 +25,15 @@ export default function HomePage() {
         <section className="mb-1">
           {timeline.map((twit: IHomeTimeline) => {
             return (
-              <Tuit
-                id={twit.id}
-                avatar={twit.avatar}
-                username={twit.username}
-                message={twit.message}
-                name={twit.name}
-              />
+              <div key={twit.id}>
+                <Tuit
+                  id={twit.id}
+                  avatar={twit.avatar}
+                  username={twit.username}
+                  message={twit.message}
+                  name={twit.name}
+                />
+              </div>
             );
           })}
         </section>

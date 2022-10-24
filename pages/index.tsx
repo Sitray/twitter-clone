@@ -5,8 +5,8 @@ import Button from '../components/Button/Button';
 import GitHub from '../components/Icons/Github';
 import { loginWithGithub, onAuthState } from '../firebase/client';
 import IGithub from '../interfaces/IGithub';
-import Avatar from '../components/Avatar/Avatar';
-import { Router, useRouter } from 'next/router';
+import { useRouter } from 'next/router';
+import Loader from '../components/Spinner/Loader';
 
 const Home: NextPage = () => {
   const [user, setUser] = useState<IGithub | undefined | null>(undefined);
@@ -20,13 +20,9 @@ const Home: NextPage = () => {
   }, [user]);
 
   const handleOnLogin = () => {
-    loginWithGithub()
-      .then((user) => {
-        setUser(user);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    loginWithGithub().catch((err) => {
+      console.log(err);
+    });
   };
 
   return (
@@ -47,14 +43,7 @@ const Home: NextPage = () => {
               <span className="ml-2">Login with Github</span>
             </Button>
           )}
-          {user && (
-            <Avatar
-              image={user.avatar}
-              alt="Avatar user info"
-              text={user.userName}
-              withText
-            />
-          )}
+          {user === undefined && <Loader />}
         </div>
       </section>
     </>
