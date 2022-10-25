@@ -35,7 +35,7 @@ export default function HomePage() {
             );
           })}
         </section>
-        <nav className="sticky bottom-0 border-t-2 border-black h-12"></nav>
+        <nav className="sticky bottom-0 border-t-2 border-b-gray-300 h-12"></nav>
       </section>
     </>
   );

@@ -10,7 +10,7 @@ interface NavbarProps {
 
 export default function Navbar({ avatar, altImage, text }: NavbarProps) {
   return (
-    <header className="h-16 sticky top-0 rounded-b-sm border-b-2 border-black items-center w-full flex bg-transparent">
+    <header className="h-16 sticky top-0 rounded-b-sm border-b-2 border-b-gray-300 items-center w-full flex bg-transparent backdrop-blur">
       <nav className="flex flex-row items-center mx-4 mb-4 mt-4 sticky">
         <div className="mr-3">
           <Avatar image={avatar} alt={altImage} />
