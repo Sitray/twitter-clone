@@ -1,20 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import Button from '../components/Button/Button';
 import GitHub from '../components/Icons/Github';
-import { loginWithGithub, onAuthState } from '../firebase/client';
-import IGithub from '../interfaces/IGithub';
+import { loginWithGithub } from '../firebase/client';
 import { useRouter } from 'next/router';
 import Loader from '../components/Spinner/Loader';
+import useUser, { USER_STATES } from '../hooks/useUser';
 
 const Home: NextPage = () => {
-  const [user, setUser] = useState<IGithub | undefined | null>(undefined);
+  const user = useUser();
   const router = useRouter();
-
-  useEffect(() => {
-    onAuthState(setUser);
-  }, []);
 
   useEffect(() => {
     user && router.replace('/home');
@@ -38,13 +34,13 @@ const Home: NextPage = () => {
         <h1 className="text-primary font-extrabold mb-3 mt-3">Twitter</h1>
         <h2 className="text-secondary text-2xl">Talk about anything</h2>
         <div className="mt-3">
-          {user === null && (
+          {user === USER_STATES.NOT_LOGGED && (
             <Button onClick={handleOnLogin}>
               <GitHub fill="white" width="24" height="24" />
               <span className="ml-2">Login with Github</span>
             </Button>
           )}
-          {user === undefined && <Loader />}
+          {user === USER_STATES.NOT_KNOWN && <Loader />}
         </div>
       </section>
     </>

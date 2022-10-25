@@ -12,7 +12,6 @@ export default function AppLayout({
   titleHead = 'Twitter',
 }: AppLayout) {
   const [darkMode, setDarkMode] = useState<string>('');
-
   return (
     <div
       className={` ${darkMode} grid place-items-center h-screen font-sans overflow-hidden`}
@@ -27,7 +26,7 @@ export default function AppLayout({
       <Head>
         <title>{titleHead}</title>
       </Head>
-      <main className="bg-white dark:bg-black dark:text-gray-500 shadow-2xl rounded-xl container md:mx-auto lg:w-2/3 h-screen overflow-y-auto">
+      <main className="bg-white font-sans dark:bg-black dark:text-gray-500 shadow-2xl rounded-xl container md:mx-auto lg:w-2/3 h-screen overflow-y-auto">
         {children}
       </main>
     </div>

@@ -2,15 +2,18 @@ import { useEffect, useState } from 'react';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import Tuit from '../../components/Tuit/Tuit';
+import useUser from '../../hooks/useUser';
 import IHomeTimeline from '../../interfaces/IHomeTimeline';
 
 export default function HomePage() {
   const [timeline, setTimeline] = useState<any>([]);
+  const user = useUser();
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/statuses/home_timeline')
-      .then((res) => res.json())
-      .then(setTimeline);
+    user &&
+      fetch('http://localhost:3000/api/statuses/home_timeline')
+        .then((res) => res.json())
+        .then(setTimeline);
   }, []);
 
   return (
