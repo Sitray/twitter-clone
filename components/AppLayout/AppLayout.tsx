@@ -14,17 +14,20 @@ export default function AppLayout({
   const [darkMode, setDarkMode] = useState<string>('');
 
   return (
-    <div className={` ${darkMode} grid place-items-center h-screen font-sans`}>
-      <button
+    <div
+      className={` ${darkMode} grid place-items-center h-screen font-sans overflow-hidden`}
+    >
+      {/**TODO: THIS IS FOR TEST, REMOVE WHEN THE DARK THEME IS COMPLETED */}
+      {/* <button
         onClick={() => setDarkMode('dark')}
         className="absolute top-0 left-3"
       >
         Dark
-      </button>
+      </button> */}
       <Head>
         <title>{titleHead}</title>
       </Head>
-      <main className="bg-white dark:bg-black dark:text-gray-500 shadow-2xl rounded-xl container md:h-90 md:mx-auto lg:w-2/3 h-screen">
+      <main className="bg-white dark:bg-black dark:text-gray-500 shadow-2xl rounded-xl container md:mx-auto lg:w-2/3 h-screen overflow-y-auto">
         {children}
       </main>
     </div>
