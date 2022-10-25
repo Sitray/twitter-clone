@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import Tuit from '../../components/Tuit/Tuit';
 import IHomeTimeline from '../../interfaces/IHomeTimeline';
@@ -35,7 +36,7 @@ export default function HomePage() {
             );
           })}
         </section>
-        <nav className="sticky bottom-0 border-t-2 border-b-gray-300 h-12"></nav>
+        <Footer />
       </section>
     </>
   );
