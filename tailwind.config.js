@@ -13,6 +13,9 @@ module.exports = {
       spacing: {
         90: '90vh',
       },
+      minHeight: {
+        200: '200px',
+      },
     },
   },
   plugins: [],
