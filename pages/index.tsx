@@ -18,7 +18,7 @@ const Home: NextPage = () => {
 
   const handleOnLogin = () => {
     loginWithGithub().catch((err) => {
-      console.log(err);
+      throw new err();
     });
   };
 

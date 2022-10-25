@@ -45,7 +45,6 @@ const mapUserFromFirebase = (user: any) => {
 export const onAuthState = (onChange: any) => {
   return onAuthStateChanged(auth, (user) => {
     const refactoredUser = user ? mapUserFromFirebase(user) : null;
-    console.log('userLoged', userLoged);
     onChange(refactoredUser);
   });
 };
