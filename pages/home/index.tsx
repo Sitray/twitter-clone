@@ -15,13 +15,11 @@ export default function HomePage() {
   return (
     <>
       <section>
-        <header className="w-full">
-          <Navbar
-            avatar={timeline.length > 0 ? timeline[0].avatar : ''}
-            altImage={timeline.length > 0 ? timeline[0].username : ''}
-            text="Inicio"
-          />
-        </header>
+        <Navbar
+          avatar={timeline.length > 0 ? timeline[0].avatar : ''}
+          altImage={timeline.length > 0 ? timeline[0].username : ''}
+          text="Inicio"
+        />
         <section className="mb-1">
           {timeline.map((twit: IHomeTimeline) => {
             return (
