@@ -14,7 +14,7 @@ export default function HomePage() {
       fetch('http://localhost:3000/api/statuses/home_timeline')
         .then((res) => res.json())
         .then(setTimeline);
-  }, []);
+  }, [user]);
 
   return (
     <>
