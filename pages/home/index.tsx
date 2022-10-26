@@ -1,4 +1,7 @@
+import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import FloatingButton from '../../components/FloatingButton/FloatingButton';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import Tuit from '../../components/Tuit/Tuit';
@@ -39,6 +42,19 @@ export default function HomePage() {
             );
           })}
         </section>
+        <Link href="/compose/tweet">
+          <div className="absolute bottom-20 right-24">
+            <FloatingButton>
+              <Image
+                src="/pen.svg"
+                alt="vercel svg"
+                width="49px"
+                height="49px"
+                className="bg-transparent rounded-full"
+              />
+            </FloatingButton>
+          </div>
+        </Link>
         <Footer />
       </section>
     </>
