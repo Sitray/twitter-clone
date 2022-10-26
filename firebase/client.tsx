@@ -98,7 +98,9 @@ export const getLatestTuits = () => {
       const data = doc.data();
       const id = doc.id;
       const { createdAt } = data;
-      const formatedData = new Date(createdAt.seconds).toLocaleDateString();
+      const formatedData = new Date(
+        createdAt.seconds * 1000
+      ).toLocaleDateString();
       return {
         ...data,
         id,

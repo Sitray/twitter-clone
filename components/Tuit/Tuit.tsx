@@ -15,9 +15,10 @@ export default function Tuit({
           <Avatar image={avatar} alt={userName} withText={false} />
         </div>
         <section className="mb-2">
-          <header className="flex flex-row space-x-2">
+          <header className="flex flex-row items-center space-x-2">
             <strong>{userName}</strong>
-            <p>{createdAt}</p>
+            <span className="text-gray-400">·</span>
+            <p className="text-xs text-gray-400">{createdAt}</p>
           </header>
           <p>{content}</p>
         </section>
