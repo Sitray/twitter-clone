@@ -4,7 +4,6 @@ import Button from '../../../components/Button/Button';
 import { addTwit } from '../../../firebase/client';
 import { COMPOSE_STATUSES } from '../../../helpers/statuses/ComposeStatus';
 import useUser from '../../../hooks/useUser';
-import IStatuses from '../../../interfaces/IStatuses';
 
 export default function Tweet() {
   const user = useUser();
