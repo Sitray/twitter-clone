@@ -6,7 +6,13 @@ import {
   signInWithPopup,
   onAuthStateChanged,
 } from 'firebase/auth';
-import IGithub from '../interfaces/IGithub';
+import {
+  collection,
+  addDoc,
+  getFirestore,
+  Timestamp,
+} from 'firebase/firestore';
+import IGithub, { IAddTwit, IUser } from '../interfaces/IGithub';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,11 +31,12 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore();
 const userLoged = auth.currentUser;
 
 const mapUserFromFirebase = (user: any) => {
   if (user) {
-    const { displayName, email, photoURL, phoneNumber } = user;
+    const { displayName, email, photoURL, phoneNumber, uid } = user;
     const { screenName } = user.reloadUserInfo;
 
     return {
@@ -38,6 +45,7 @@ const mapUserFromFirebase = (user: any) => {
       email,
       phoneNumber,
       userName: screenName,
+      uid,
     };
   }
 };
@@ -52,4 +60,18 @@ export const onAuthState = (onChange: any) => {
 export const loginWithGithub = () => {
   const githubProvider = new GithubAuthProvider();
   return signInWithPopup(auth, githubProvider).then(mapUserFromFirebase);
+};
+
+export const addTwit = ({ avatar, content, userId, userName }: any) => {
+  const addDocument = addDoc(collection(db, 'Tuits'), {
+    avatar,
+    content,
+    userId,
+    userName,
+    createdAt: Timestamp.fromDate(new Date()),
+    likesCount: 0,
+    retuitsCount: 0,
+  });
+
+  return addDocument;
 };
