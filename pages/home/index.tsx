@@ -5,6 +5,7 @@ import FloatingButton from '../../components/FloatingButton/FloatingButton';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import Tuit from '../../components/Tuit/Tuit';
+import { getLatestTuits } from '../../firebase/client';
 import useUser from '../../hooks/useUser';
 import IHomeTimeline from '../../interfaces/IHomeTimeline';
 
@@ -13,12 +14,10 @@ export default function HomePage() {
   const user = useUser();
 
   useEffect(() => {
-    user &&
-      fetch('http://localhost:3000/api/statuses/home_timeline')
-        .then((res) => res.json())
-        .then(setTimeline);
+    user && getLatestTuits().then(setTimeline);
   }, [user]);
 
+  console.log('timeline', timeline);
   return (
     <>
       <section>
@@ -34,9 +33,9 @@ export default function HomePage() {
                 <Tuit
                   id={twit.id}
                   avatar={twit.avatar}
-                  username={twit.username}
-                  message={twit.message}
-                  name={twit.name}
+                  userName={twit.userName}
+                  content={twit.content}
+                  createdAt={twit.createdAt}
                 />
               </div>
             );

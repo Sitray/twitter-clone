@@ -11,8 +11,10 @@ import {
   addDoc,
   getFirestore,
   Timestamp,
+  getDoc,
+  getDocs,
 } from 'firebase/firestore';
-import IGithub, { IAddTwit, IUser } from '../interfaces/IGithub';
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -62,7 +64,20 @@ export const loginWithGithub = () => {
   return signInWithPopup(auth, githubProvider).then(mapUserFromFirebase);
 };
 
-export const addTwit = ({ avatar, content, userId, userName }: any) => {
+//GET AND SET TUITS
+interface addTuitProps {
+  avatar: string;
+  content: string;
+  userId: string;
+  userName: string;
+}
+
+export const addTwit = ({
+  avatar,
+  content,
+  userId,
+  userName,
+}: addTuitProps) => {
   const addDocument = addDoc(collection(db, 'Tuits'), {
     avatar,
     content,
@@ -74,4 +89,23 @@ export const addTwit = ({ avatar, content, userId, userName }: any) => {
   });
 
   return addDocument;
+};
+
+export const getLatestTuits = () => {
+  const getDocument = getDocs(collection(db, 'Tuits')).then((data) => {
+    console.log(data);
+    return data.docs.map((doc) => {
+      const data = doc.data();
+      const id = doc.id;
+      const { createdAt } = data;
+      const formatedData = new Date(createdAt.seconds).toLocaleDateString();
+      return {
+        ...data,
+        id,
+        createdAt: formatedData,
+      };
+    });
+  });
+
+  return getDocument;
 };

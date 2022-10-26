@@ -30,9 +30,14 @@ export default function Tweet() {
         userId: user.uid,
         //@ts-ignore
         userName: user.userName,
-      }).then(() => {
-        router.push('/home');
-      });
+      })
+        .then(() => {
+          router.push('/home');
+        })
+        .catch((err) => {
+          setStatus(COMPOSE_STATUSES.ERROR);
+          throw new err();
+        });
     }
   };
 
