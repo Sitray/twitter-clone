@@ -52,6 +52,7 @@ export default function Tweet() {
           className=" w-full border-0 text-lg p-4 resize-none outline-0 min-h-200"
           value={message}
           onChange={handleOnChangeText}
+          maxLength={240}
         ></textarea>
         <div className="p-4">
           <Button disabled={isButtonDisabled}>Twittear</Button>
