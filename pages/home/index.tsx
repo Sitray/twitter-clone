@@ -43,7 +43,7 @@ export default function HomePage() {
           })}
         </section>
         <Link href="/compose/tweet">
-          <div className="absolute bottom-20 right-24">
+          <div className="absolute bottom-20 right-4 md:right-4 lg:right-48 desktop:right-64">
             <FloatingButton>
               <Image
                 src="/pen.svg"

@@ -16,6 +16,10 @@ module.exports = {
       minHeight: {
         200: '200px',
       },
+      screens: {
+        desktop: '1440px',
+        // => @media (min-width: 1280px) { ... }
+      },
     },
   },
   plugins: [],
