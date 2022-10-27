@@ -1,8 +1,6 @@
 import { firestore } from '../../../firebase/admin';
 
 export default (req, res) => {
-  console.log('req', req);
-  console.log('res', res);
   const { query } = req;
   const { id } = query;
 
@@ -12,7 +10,18 @@ export default (req, res) => {
     .get()
     .then((doc: any) => {
       const data = doc.data();
-      res.json(data);
+      const id = doc.id;
+      const { createdAt } = data;
+
+      const formatedData = new Date(
+        createdAt.seconds * 1000
+      ).toLocaleDateString();
+
+      res.json({
+        ...data,
+        id,
+        createdAt: formatedData,
+      });
     })
     .catch(() => {
       console.log(res);
