@@ -14,13 +14,13 @@ export default function Tuit({
         <div className="mr-3 w-auto object-none">
           <Avatar image={avatar} alt={userName} withText={false} />
         </div>
-        <section className="mb-2">
+        <section className="mb-2 w-screen break-words ">
           <header className="flex flex-row items-center space-x-2">
             <strong>{userName}</strong>
             <span className="text-gray-400">·</span>
-            <p className="text-xs text-gray-400">{createdAt}</p>
+            <time className="text-xs text-gray-400">{createdAt}</time>
           </header>
-          <p>{content}</p>
+          <span className="">{content}</span>
         </section>
       </article>
     </>

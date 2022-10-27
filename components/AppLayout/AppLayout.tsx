@@ -26,7 +26,7 @@ export default function AppLayout({
       <Head>
         <title>{titleHead}</title>
       </Head>
-      <main className="bg-white font-sans dark:bg-black dark:text-gray-500 shadow-2xl rounded-xl container md:mx-auto lg:w-2/3 h-screen overflow-y-auto">
+      <main className="bg-white font-sans dark:bg-black dark:text-gray-500 shadow-2xl rounded-xl container md:mx-auto lg:w-2/3 h-screen overflow-y-auto overflow-x-hidden">
         {children}
       </main>
     </div>
