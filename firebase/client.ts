@@ -111,10 +111,16 @@ const mapTwitFromFirebase = (doc: any) => {
 const queryData = query(collection(db, 'Tuits'), orderBy('createdAt', 'desc'));
 
 export const listenLatestTuits = (callback: any) => {
-  const getLatestTuits = onSnapshot(queryData, ({ docs }) => {
-    const newTwits = docs.map(mapTwitFromFirebase);
-    callback(newTwits);
-  });
+  const getLatestTuits = onSnapshot(
+    queryData,
+    ({ docs }) => {
+      const newTwits = docs.map(mapTwitFromFirebase);
+      callback(newTwits);
+    },
+    (error) => {
+      throw error;
+    }
+  );
 
   return getLatestTuits;
 };
