@@ -16,11 +16,11 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 _DONE:_
 
-- Login with Github using **Firebase**
-- Post a Twit
-- Load your own twits at the home page
-- Open a single twit
-- Navigation from Login, Home Page and Twit its already done
+- Login with Github using **Firebase** :white_check_mark:
+- Post a Twit :white_check_mark:
+- Load your own twits at the home page :white_check_mark:
+- Open a single twit :white_check_mark:
+- Navigation from Login, Home Page and Twit its already done :white_check_mark:
 
 _TODO:_
 
