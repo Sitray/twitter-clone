@@ -21,6 +21,7 @@ _DONE:_
 - Load your own twits at the home page :white_check_mark:
 - Open a single twit :white_check_mark:
 - Navigation from Login, Home Page and Twit its already done :white_check_mark:
+- Auto update Timeline when ther's a new Twit :white_check_mark:
 
 _TODO:_
 
@@ -32,4 +33,5 @@ _TODO:_
 - Like a twit
 - Retweet a twit
 - Follow other users and unfollow them
-- Load twits from other users
+- Load twits from other users(Now we see all the twits)
+- Load twits only from the users you follow
