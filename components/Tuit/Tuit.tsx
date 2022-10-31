@@ -10,7 +10,6 @@ export default function Tuit({
   content,
   createdAt,
 }: IHomeTimeline) {
-  console.log('created', createdAt);
   //const useFormatedData = useDateTimeFormat(createdAt);
 
   return (

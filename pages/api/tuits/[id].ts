@@ -24,7 +24,6 @@ export default (req, res) => {
       });
     })
     .catch(() => {
-      console.log(res);
       res.status(404).end();
     });
 };

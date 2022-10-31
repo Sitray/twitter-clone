@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from 'firebase/app';
+import { FirebaseApp, initializeApp } from 'firebase/app';
 import {
   GithubAuthProvider,
   getAuth,
@@ -13,6 +13,9 @@ import {
   Timestamp,
   getDoc,
   getDocs,
+  onSnapshot,
+  query,
+  orderBy,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -91,22 +94,35 @@ export const addTwit = ({
   return addDocument;
 };
 
-export const getLatestTuits = () => {
-  const getDocument = getDocs(collection(db, 'Tuits')).then((data) => {
-    console.log(data);
-    return data.docs.map((doc) => {
-      const data = doc.data();
-      const id = doc.id;
-      const { createdAt } = data;
+const mapTwitFromFirebase = (doc: any) => {
+  const data = doc.data();
+  const id = doc.id;
+  const { createdAt } = data;
 
-      const formatedData = new Date(
-        createdAt.seconds * 1000
-      ).toLocaleDateString();
-      return {
-        ...data,
-        id,
-        createdAt: formatedData,
-      };
+  const formatedData = new Date(createdAt.seconds * 1000).toLocaleDateString();
+  return {
+    ...data,
+    id,
+    createdAt: formatedData,
+  };
+};
+
+//query to sort by createdAt and desc
+const queryData = query(collection(db, 'Tuits'), orderBy('createdAt', 'desc'));
+
+export const listenLatestTuits = (callback: any) => {
+  const getLatestTuits = onSnapshot(queryData, ({ docs }) => {
+    const newTwits = docs.map(mapTwitFromFirebase);
+    callback(newTwits);
+  });
+
+  return getLatestTuits;
+};
+
+export const getLatestTuits = () => {
+  const getDocument = getDocs(queryData).then((data) => {
+    return data.docs.map((doc) => {
+      return mapTwitFromFirebase(doc);
     });
   });
 

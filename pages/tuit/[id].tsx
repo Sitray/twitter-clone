@@ -33,10 +33,8 @@ export default function TwitterPage({
 }
 
 export async function getServerSideProps(context: any) {
-  console.log('conext', context);
   const { params } = context;
   const { id } = params;
-  console.log('ID', id);
 
   return fetch(`http://localhost:3000/api/tuits/${id}`).then((res) => {
     if (res.ok) {
