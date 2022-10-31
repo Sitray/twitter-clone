@@ -16,7 +16,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 _DONE:_
 
-- Login with Github using **Firebase**
+- Login with Github using **Firebase** :white_check_mark:
 - Post a Twit
 - Load your own twits at the home page
 - Open a single twit
