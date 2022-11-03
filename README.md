@@ -22,6 +22,7 @@ _DONE:_
 - Open a single twit :white_check_mark:
 - Navigation from Login, Home Page and Twit its already done :white_check_mark:
 - Auto update Timeline when ther's a new Twit :white_check_mark:
+- Can delete a twit :white_check_mark:
 
 _TODO:_
 
@@ -29,7 +30,7 @@ _TODO:_
 - Update buttons to have a better navigation options
 - Logout from our twitter clone
 - Edit a twit
-- Delete a twit
+- <s>Delete a twit</s>
 - Like a twit
 - Retweet a twit
 - Follow other users and unfollow them
