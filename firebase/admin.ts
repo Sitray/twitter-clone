@@ -1,9 +1,8 @@
 'use strict';
 const admin = require('firebase-admin');
 
-//const serviceAccount = require('./firebase-keys.json ');
-import serviceAccount from './firebase-keys.json';
-
+//@ts-ignore
+const serviceAccount = JSON.parse(process.env.FIREBASE_CONFIG);
 try {
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
