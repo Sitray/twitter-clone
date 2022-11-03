@@ -12,7 +12,6 @@ export default function Tuit({
   createdAt,
 }: IHomeTimeline) {
   const handleOnDelete = (id: string) => {
-    console.log('hola', id);
     deleteTwit(id);
   };
 

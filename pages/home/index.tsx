@@ -5,7 +5,7 @@ import FloatingButton from '../../components/FloatingButton/FloatingButton';
 import Footer from '../../components/Footer/Footer';
 import Navbar from '../../components/Navbar/Navbar';
 import Tuit from '../../components/Tuit/Tuit';
-import { getLatestTuits, listenLatestTuits } from '../../firebase/client';
+import { listenLatestTuits } from '../../firebase/client';
 import useUser from '../../hooks/useUser';
 import IHomeTimeline from '../../interfaces/IHomeTimeline';
 
@@ -14,7 +14,6 @@ export default function HomePage() {
   const user = useUser();
 
   useEffect(() => {
-    //user && getLatestTuits().then(setTimeline);
     if (user) {
       listenLatestTuits(setTimeline);
     }
