@@ -11,11 +11,12 @@ import {
   addDoc,
   getFirestore,
   Timestamp,
-  getDoc,
   getDocs,
   onSnapshot,
   query,
   orderBy,
+  deleteDoc,
+  doc,
 } from 'firebase/firestore';
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -133,4 +134,12 @@ export const getLatestTuits = () => {
   });
 
   return getDocument;
+};
+
+//DELETE TWIT
+interface deleteTwit {
+  twitId: string;
+}
+export const deleteTwit = async (twitId: string) => {
+  await deleteDoc(doc(db, 'Tuits', twitId));
 };

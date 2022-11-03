@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { deleteTwit } from '../../firebase/client';
 import useDateTimeFormat from '../../hooks/useDateFormat';
 import IHomeTimeline from '../../interfaces/IHomeTimeline';
 import Avatar from '../Avatar/Avatar';
@@ -10,7 +11,10 @@ export default function Tuit({
   content,
   createdAt,
 }: IHomeTimeline) {
-  //const useFormatedData = useDateTimeFormat(createdAt);
+  const handleOnDelete = (id: string) => {
+    console.log('hola', id);
+    deleteTwit(id);
+  };
 
   return (
     <>
@@ -28,6 +32,7 @@ export default function Tuit({
             <span className="cursor-default">{content}</span>
           </section>
         </Link>
+        <button onClick={() => handleOnDelete(id)}>DELETE</button>
       </article>
     </>
   );
